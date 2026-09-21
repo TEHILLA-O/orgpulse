@@ -71,7 +71,7 @@ async function resolveGithub(parsed: ParsedProfile): Promise<ProfileDraft> {
     const response = await fetch(`https://api.github.com/users/${encodeURIComponent(username)}`, {
       headers: {
         accept: 'application/vnd.github+json',
-        'user-agent': 'OpplyOchart/0.1',
+        'user-agent': 'OmniOchart/0.1',
       },
     });
     if (!response.ok) {
@@ -185,7 +185,7 @@ export async function fetchGithubLanguages(username: string): Promise<string[]> 
       {
         headers: {
           accept: 'application/vnd.github+json',
-          'user-agent': 'OpplyOchart/0.1',
+          'user-agent': 'OmniOchart/0.1',
         },
       },
     );

@@ -40,7 +40,7 @@ export function FacesView({
           <div className="mb-3 flex items-center gap-2">
             <span
               className="h-3 w-3 rounded-sm"
-              style={{ background: group.colour ?? '#22d3ee' }}
+              style={{ background: group.colour ?? 'var(--color-brand)' }}
             />
             <h2 className="text-sm font-semibold">{group.name}</h2>
             <span className="text-xs text-[var(--muted-foreground)]">{group.nodes.length}</span>
@@ -56,11 +56,11 @@ export function FacesView({
                   type="button"
                   onClick={() => onSelect(node.id)}
                   className={cn(
-                    'overflow-hidden rounded-2xl border bg-[rgba(28,8,62,0.72)] text-left text-white shadow-[0_10px_24px_rgba(6,0,22,0.28)] backdrop-blur-xl transition-[transform,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(34,211,238,0.16)] active:scale-[0.98]',
+                    'overflow-hidden rounded-2xl border bg-raised/70 text-left text-white shadow-[0_10px_24px_rgba(0,0,0,0.28)] backdrop-blur-xl transition-[transform,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(0,0,0,0.38)] active:scale-[0.98]',
                     selectedId === node.id
-                      ? 'border-[#22d3ee] ring-4 ring-[#22d3ee]/20'
+                      ? 'border-brand ring-4 ring-brand/20'
                       : 'border-white/12',
-                    node.isVacant && 'border-dashed border-white/30 bg-[rgba(28,8,62,0.4)]',
+                    node.isVacant && 'border-dashed border-caution/45 bg-raised/40',
                   )}
                 >
                   <div className="flex flex-col items-center p-4 text-center">
@@ -75,7 +75,7 @@ export function FacesView({
                       <div
                         className={cn(
                           'flex h-16 w-16 items-center justify-center rounded-full text-lg font-semibold',
-                          node.isVacant ? 'bg-white/10 text-[#67e8f9]' : 'bg-[#22d3ee] text-[#071018]',
+                          node.isVacant ? 'bg-white/10 text-brand-hi' : 'bg-brand text-ink-invert',
                         )}
                       >
                         {node.isVacant ? 'V' : initials(name)}
@@ -93,7 +93,7 @@ export function FacesView({
                   </div>
                   <div
                     className="h-7 w-full px-2 text-center text-[11px] leading-7 font-medium text-white"
-                    style={{ background: node.isVacant ? 'rgba(255,255,255,0.18)' : (node.departmentColour ?? '#22d3ee') }}
+                    style={{ background: node.isVacant ? 'var(--color-caution)' : (node.departmentColour ?? 'var(--color-brand)') }}
                   >
                     <span className="block truncate">{node.departmentName ?? 'Unassigned'}</span>
                   </div>

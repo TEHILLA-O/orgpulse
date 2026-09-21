@@ -1,0 +1,42 @@
+---
+description: Omni colour system - use semantic tokens, never raw hex or rgba
+globs: src/**/*.{tsx,ts,css}
+alwaysApply: false
+---
+
+# Omni colour tokens
+
+All colours are defined once in `src/app/globals.css`. Never hardcode a hex or
+`rgba()` colour in a component.
+
+| Purpose | Tokens |
+| --- | --- |
+| Surfaces (back to front) | `sunken` `canvas` `surface` `raised` `elevated` |
+| Text | `ink` `ink-soft` `ink-faint` `ink-invert` |
+| Brand: primary actions, solid reporting lines, filled seats | `brand` `brand-hi` `brand-soft` |
+| Signal: secondary/dotted-line relationships, planning mode | `signal` `signal-hi` `signal-soft` |
+| Semantic | `positive` `caution` (vacancies) `critical` |
+
+```tsx
+// ❌ BAD
+<div className="bg-[#22d3ee] text-[#071018] shadow-[0_8px_20px_rgba(34,211,238,0.2)]" />
+
+// ✅ GOOD
+<div className="bg-brand text-ink-invert shadow-[0_8px_20px_rgba(0,0,0,0.35)]" />
+```
+
+Use `/NN` for opacity (`bg-raised/70`, `border-caution/45`). For inline styles
+and SVG (React Flow edges), use `var(--color-brand)`.
+
+Shadows are neutral black. Only tint a shadow with brand when it signals state
+(selection, focus, active) — never for decoration.
+
+## Two rules that are easy to get wrong
+
+**Colour-bearing CSS must be layered.** An unlayered rule outranks
+`@layer utilities`, so an unlayered `* { border-color: ... }` silently kills
+every `border-<colour>` utility. Keep such defaults inside `@layer base`.
+
+**Two places may still use literal hex:**
+- `src/app/global-error.tsx` — renders its own document without `globals.css`.
+- Department/group colours — user data persisted to the database, not theme.

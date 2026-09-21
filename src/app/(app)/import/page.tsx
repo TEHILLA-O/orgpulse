@@ -333,11 +333,11 @@ export default function ImportPage() {
           className={cn(
             'flex cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed px-4 py-10 text-center transition-colors',
             dragging
-              ? 'border-[#22d3ee] bg-[#22d3ee]/10'
+              ? 'border-brand bg-brand/10'
               : 'border-white/20 bg-white/5 hover:border-white/40 hover:bg-white/8',
           )}
         >
-          <FileUp className="h-8 w-8 text-[#67e8f9]" />
+          <FileUp className="h-8 w-8 text-brand-hi" />
           {file ? (
             <>
               <p className="mt-3 text-sm font-medium text-white">{file.name}</p>
@@ -387,7 +387,7 @@ export default function ImportPage() {
             </div>
             <div className="flex flex-wrap items-center justify-between gap-2">
               {replaceExisting ? (
-                <p className="text-xs text-[#67e8f9]">
+                <p className="text-xs text-brand-hi">
                   Apply will switch off mock data and rebuild the org chart from this file only.
                 </p>
               ) : (
@@ -400,7 +400,7 @@ export default function ImportPage() {
               </Button>
             </div>
             {!canPreview ? (
-              <p className="text-xs text-[#fecdd3]">
+              <p className="text-xs text-critical-soft">
                 Map at least a name (or email) and a job title before previewing.
               </p>
             ) : null}
@@ -414,10 +414,10 @@ export default function ImportPage() {
           <Button onClick={() => upload.mutate()} disabled={!canPreview || upload.isPending}>
             {upload.isPending ? 'Reading…' : 'Preview and review'}
           </Button>
-          <Button variant="outline" onClick={() => downloadCsv(SAMPLE_CSV, 'orgpulse-import-sample.csv')}>
+          <Button variant="outline" onClick={() => downloadCsv(SAMPLE_CSV, 'omni-import-sample.csv')}>
             Sample CSV
           </Button>
-          <Button variant="outline" onClick={() => downloadCsv(ISSUE_CSV, 'orgpulse-import-warnings.csv')}>
+          <Button variant="outline" onClick={() => downloadCsv(ISSUE_CSV, 'omni-import-warnings.csv')}>
             Sample with warnings
           </Button>
         </div>
@@ -459,7 +459,7 @@ export default function ImportPage() {
                   </Button>
                 </>
               ) : (
-                <Link href="/charts" className="text-sm font-medium text-[#22d3ee] underline">
+                <Link href="/charts" className="text-sm font-medium text-brand underline">
                   Open org chart
                 </Link>
               )}
@@ -468,12 +468,12 @@ export default function ImportPage() {
 
           {errors.length || warnings.length ? (
             <div className="grid gap-3 md:grid-cols-2">
-              <div className="rounded-2xl border border-[#fb7185]/35 bg-[#fb7185]/10 p-3">
-                <p className="flex items-center gap-2 text-sm font-semibold text-[#fecdd3]">
+              <div className="rounded-2xl border border-critical/35 bg-critical/10 p-3">
+                <p className="flex items-center gap-2 text-sm font-semibold text-critical-soft">
                   <AlertTriangle className="h-4 w-4" />
                   {errors.length} error{errors.length === 1 ? '' : 's'}
                 </p>
-                <ul className="mt-2 space-y-1 text-sm text-[#fecdd3]">
+                <ul className="mt-2 space-y-1 text-sm text-critical-soft">
                   {errors.length
                     ? errors.slice(0, 8).map((item, index) => (
                         <li key={`${item.message}-${index}`}>
@@ -484,8 +484,8 @@ export default function ImportPage() {
                     : <li>No blocking errors.</li>}
                 </ul>
               </div>
-              <div className="rounded-2xl border border-[#e879f9]/35 bg-[#e879f9]/10 p-3">
-                <p className="flex items-center gap-2 text-sm font-semibold text-[#f5d0fe]">
+              <div className="rounded-2xl border border-signal/35 bg-signal/10 p-3">
+                <p className="flex items-center gap-2 text-sm font-semibold text-signal-soft">
                   <AlertTriangle className="h-4 w-4" />
                   {warnings.length} warning{warnings.length === 1 ? '' : 's'}
                 </p>
@@ -502,21 +502,21 @@ export default function ImportPage() {
               </div>
             </div>
           ) : result.counts.new > 0 ? (
-            <p className="flex items-center gap-2 text-sm text-[#67e8f9]">
+            <p className="flex items-center gap-2 text-sm text-brand-hi">
               <CheckCircle2 className="h-4 w-4" />
               File checks passed. You can apply these rows to the live organisation.
             </p>
           ) : null}
 
           {result.counts.new === 0 && result.job.status !== 'COMPLETED' ? (
-            <p className="text-sm text-[#fecdd3]">
+            <p className="text-sm text-critical-soft">
               No valid rows to apply yet. Fix missing names or titles in the file and preview again.
             </p>
           ) : null}
 
           {agent || review.isPending ? (
-            <div className="rounded-2xl border border-[#22d3ee]/25 bg-[#22d3ee]/8 p-4">
-              <p className="flex items-center gap-2 text-sm font-semibold text-[#67e8f9]">
+            <div className="rounded-2xl border border-brand/25 bg-brand/8 p-4">
+              <p className="flex items-center gap-2 text-sm font-semibold text-brand-hi">
                 <Sparkles className="h-4 w-4" />
                 {agent?.modelConnected ? 'AI import agent' : 'Import checks'}
               </p>

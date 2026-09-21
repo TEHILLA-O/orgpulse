@@ -9,10 +9,10 @@ export const GET = apiHandler('charts:read', async (ctx) => {
     const buffer = await directoryToXlsx(rows);
     return fileResponse(
       new Uint8Array(buffer),
-      'orgpulse-directory.xlsx',
+      'omni-directory.xlsx',
       'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     );
   }
 
-  return fileResponse(directoryToCsv(rows), 'orgpulse-directory.csv', 'text/csv; charset=utf-8');
+  return fileResponse(directoryToCsv(rows), 'omni-directory.csv', 'text/csv; charset=utf-8');
 });

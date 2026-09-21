@@ -9,12 +9,12 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-[var(--primary)] text-[var(--primary-foreground)] shadow-[0_8px_20px_rgba(34,211,238,0.18)] hover:bg-[#67e8f9] hover:shadow-[0_12px_28px_rgba(34,211,238,0.32)]',
+          'bg-[var(--primary)] text-[var(--primary-foreground)] shadow-[0_8px_20px_rgba(76,141,255,0.18)] hover:bg-brand-hi hover:shadow-[0_12px_28px_rgba(76,141,255,0.32)]',
         secondary: 'bg-white/10 text-white hover:bg-white/15',
         outline: 'border border-white/30 bg-transparent text-white hover:border-white/50 hover:bg-white/10',
         ghost: 'text-white hover:bg-white/10',
-        gold: 'bg-[var(--accent)] text-[var(--accent-foreground)] shadow-[0_8px_20px_rgba(232,121,249,0.2)] hover:bg-[#f0abfc] hover:shadow-[0_12px_28px_rgba(232,121,249,0.32)]',
-        destructive: 'bg-[var(--destructive)] text-white hover:bg-[#fb7185]/80',
+        gold: 'bg-[var(--accent)] text-[var(--accent-foreground)] shadow-[0_8px_20px_rgba(167,139,250,0.2)] hover:bg-signal-hi hover:shadow-[0_12px_28px_rgba(167,139,250,0.32)]',
+        destructive: 'bg-[var(--destructive)] text-white hover:bg-critical/80',
       },
       size: {
         default: 'h-9 px-3',

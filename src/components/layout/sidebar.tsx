@@ -24,7 +24,7 @@ import { cn } from '@/lib/utils';
 
 type NavMode = 'user' | 'dev';
 
-const NAV_MODE_KEY = 'opply:nav-mode';
+const NAV_MODE_KEY = 'omni:nav-mode';
 const DEV_ONLY_HREFS = ['/import', '/integrations', '/administration'] as const;
 
 const NAV: Array<{ href: string; label: string; icon: LucideIcon; badge?: string }> = [
@@ -108,13 +108,13 @@ export function AppSidebar({
           collapsed ? 'flex-col justify-center px-2' : 'gap-3 px-3',
         )}
       >
-        <div className="motion-logo flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#22d3ee,#e879f9)] text-sm font-bold text-[#120024]">
+        <div className="motion-logo flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-brand text-sm font-bold text-ink-invert">
           O
         </div>
         {collapsed ? null : (
           <div className="min-w-0">
-            <p className="text-sm font-semibold tracking-tight text-white">Opply</p>
-            <p className="truncate text-xs text-[#67e8f9]">org chart</p>
+            <p className="text-sm font-semibold tracking-tight text-white">Omni</p>
+            <p className="truncate text-xs text-brand-hi">org chart</p>
           </div>
         )}
         <div
@@ -144,7 +144,7 @@ export function AppSidebar({
             onClick={() => chooseNavMode('dev')}
             className={cn(
               'rounded-full px-2 py-1 text-[9px] leading-tight font-medium tracking-wide whitespace-nowrap transition-colors',
-              navMode === 'dev' ? 'bg-[#67e8f9]/25 text-[#67e8f9]' : 'text-white/45 hover:text-white',
+              navMode === 'dev' ? 'bg-brand-hi/25 text-brand-hi' : 'text-white/45 hover:text-white',
             )}
           >
             {collapsed ? 'D' : 'Dev mode'}
@@ -165,10 +165,10 @@ export function AppSidebar({
                 'group relative flex items-center gap-3 rounded-2xl px-3 py-2.5 text-sm text-[var(--sidebar-muted)] transition-[background-color,color,transform,box-shadow] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:translate-x-0.5 hover:bg-white/10 hover:text-white',
                 collapsed && 'justify-center px-0 hover:translate-x-0',
                 active &&
-                  'bg-white/10 text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06),0_0_18px_rgba(34,211,238,0.08)]',
+                  'bg-white/10 text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]',
                 active &&
                   !collapsed &&
-                  'before:absolute before:top-1/2 before:left-1.5 before:h-5 before:w-1 before:-translate-y-1/2 before:rounded-full before:bg-[#22d3ee] before:shadow-[0_0_10px_#22d3ee] before:content-[""]',
+                  'before:absolute before:top-1/2 before:left-1.5 before:h-5 before:w-1 before:-translate-y-1/2 before:rounded-full before:bg-brand before:content-[""]',
               )}
             >
               <Icon className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:scale-110" />
@@ -176,7 +176,7 @@ export function AppSidebar({
                 <span className="flex min-w-0 flex-1 items-center justify-between gap-2">
                   <span>{item.label}</span>
                   {badge ? (
-                    <span className="rounded-full bg-cyan-400/15 px-1.5 py-0.5 text-[9px] tracking-wide text-[#67e8f9] uppercase">
+                    <span className="rounded-full bg-cyan-400/15 px-1.5 py-0.5 text-[9px] tracking-wide text-brand-hi uppercase">
                       {badge}
                     </span>
                   ) : null}

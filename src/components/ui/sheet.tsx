@@ -18,7 +18,7 @@ export function SheetContent({
       <SheetPrimitive.Overlay className="motion-overlay fixed inset-0 z-40 bg-black/35 backdrop-blur-[2px]" />
       <SheetPrimitive.Content
         className={cn(
-          'fixed z-50 flex h-full w-[min(26rem,100%)] flex-col border-white/12 bg-[#1a0538]/94 text-white shadow-[0_20px_60px_rgba(6,0,22,0.45)] backdrop-blur-xl',
+          'fixed z-50 flex h-full w-[min(26rem,100%)] flex-col border-white/12 bg-sunken/94 text-white shadow-[0_20px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl',
           side === 'right'
             ? 'motion-sheet-right top-0 right-0 rounded-l-3xl border-l'
             : 'motion-sheet-left top-0 left-0 rounded-r-3xl border-r',

@@ -1,5 +1,5 @@
 /**
- * Idempotent demo seed for Opply.
+ * Idempotent demo seed for Omni.
  *
  * Generates a realistic organisation: 1 CEO, 5 executives, an executive
  * assistant, 20 managers, 123 individual contributors (150 people), 8
@@ -133,7 +133,7 @@ async function main() {
 
   const organisation = await prisma.organisation.create({
     data: {
-      name: 'Opply',
+      name: 'Omni',
       slug: 'northstar',
       timezone: 'Europe/London',
       settings: {
@@ -583,7 +583,7 @@ async function main() {
   const chart = await prisma.chart.create({
     data: {
       organisationId: organisation.id,
-      name: 'Opply — Company',
+      name: 'Omni — Company',
       description: 'Default live organisation chart',
       rootPositionId: positionsByKey.get('ceo'),
       isDefault: true,

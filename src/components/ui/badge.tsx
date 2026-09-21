@@ -7,9 +7,9 @@ export function Badge({
 }: React.ComponentProps<'span'> & { tone?: 'default' | 'gold' | 'vacant' | 'sea' }) {
   const tones = {
     default: 'bg-white/10 text-white',
-    gold: 'bg-[#e879f9]/20 text-[#f5d0fe]',
-    vacant: 'bg-[#22d3ee]/18 text-[#a5f3fc]',
-    sea: 'bg-[#22d3ee]/20 text-[#67e8f9]',
+    gold: 'bg-signal/20 text-signal-soft',
+    vacant: 'bg-caution/18 text-caution-soft',
+    sea: 'bg-brand/20 text-brand-hi',
   };
   return (
     <span

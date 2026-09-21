@@ -14,12 +14,12 @@ export const DEMO_USER_ID = '22222222-2222-4222-a222-222222222222';
 const now = new Date('2026-03-01T00:00:00.000Z');
 
 const dept = {
-  exec: { id: 'd-exec', name: 'Executive Office', code: 'EXEC', colour: '#7c3aed', parentDepartmentId: null },
-  fin: { id: 'd-fin', name: 'Finance', code: 'FIN', colour: '#22d3ee', parentDepartmentId: null },
-  ppl: { id: 'd-ppl', name: 'People & Culture', code: 'PPL', colour: '#e879f9', parentDepartmentId: null },
-  tech: { id: 'd-tech', name: 'Technology', code: 'TECH', colour: '#6366f1', parentDepartmentId: null },
-  ops: { id: 'd-ops', name: 'Operations', code: 'OPS', colour: '#8b5cf6', parentDepartmentId: null },
-  com: { id: 'd-com', name: 'Commercial', code: 'COM', colour: '#ec4899', parentDepartmentId: null },
+  exec: { id: 'd-exec', name: 'Executive Office', code: 'EXEC', colour: '#a78bfa', parentDepartmentId: null },
+  fin: { id: 'd-fin', name: 'Finance', code: 'FIN', colour: '#3dd68c', parentDepartmentId: null },
+  ppl: { id: 'd-ppl', name: 'People & Culture', code: 'PPL', colour: '#f2b33d', parentDepartmentId: null },
+  tech: { id: 'd-tech', name: 'Technology', code: 'TECH', colour: '#38bdf8', parentDepartmentId: null },
+  ops: { id: 'd-ops', name: 'Operations', code: 'OPS', colour: '#2dd4bf', parentDepartmentId: null },
+  com: { id: 'd-com', name: 'Commercial', code: 'COM', colour: '#fb7185', parentDepartmentId: null },
 };
 
 const loc = {
@@ -28,8 +28,8 @@ const loc = {
 };
 
 const groups = [
-  { id: 'g-emp', name: 'Employees', slug: 'employees', kind: 'COHORT', colour: '#22d3ee', description: 'Everyone on the payroll', isSystem: true, sortOrder: 0, organisationId: DEMO_ORG_ID, createdAt: now, updatedAt: now, deletedAt: null },
-  { id: 'g-board', name: 'Leadership', slug: 'leadership', kind: 'GOVERNANCE', colour: '#e879f9', description: 'Executive team', isSystem: false, sortOrder: 1, organisationId: DEMO_ORG_ID, createdAt: now, updatedAt: now, deletedAt: null },
+  { id: 'g-emp', name: 'Employees', slug: 'employees', kind: 'COHORT', colour: '#4c8dff', description: 'Everyone on the payroll', isSystem: true, sortOrder: 0, organisationId: DEMO_ORG_ID, createdAt: now, updatedAt: now, deletedAt: null },
+  { id: 'g-board', name: 'Leadership', slug: 'leadership', kind: 'GOVERNANCE', colour: '#a78bfa', description: 'Executive team', isSystem: false, sortOrder: 1, organisationId: DEMO_ORG_ID, createdAt: now, updatedAt: now, deletedAt: null },
 ];
 
 interface Seat {
@@ -110,7 +110,7 @@ for (const seat of seats) {
       status: 'ACTIVE',
       holidayRemainingDays: 18,
       groupIds: seat.managerKey === null || ['cfo', 'cpo', 'cto', 'coo', 'cco'].includes(seat.key) ? [groups[0]!.id, groups[1]!.id] : [groups[0]!.id],
-      bio: `${seat.firstName} holds ${seat.title} at Opply.`,
+      bio: `${seat.firstName} holds ${seat.title} at Omni.`,
       employeeId: `NST-${seat.key.toUpperCase()}`,
       skills: seat.skills ?? [],
     });
@@ -173,7 +173,7 @@ export function demoChart() {
   return {
     id: 'chart-northstar',
     organisationId: DEMO_ORG_ID,
-    name: 'Opply — Company',
+    name: 'Omni — Company',
     isDefault: true,
     deletedAt: null,
     configuration: { collapsedPositionIds: [] as string[], showSecondaryLines: true },
@@ -183,7 +183,7 @@ export function demoChart() {
 export function demoOrganisation() {
   return {
     id: DEMO_ORG_ID,
-    name: 'Opply',
+    name: 'Omni',
     slug: 'northstar',
     timezone: 'Europe/London',
     settings: {},
@@ -342,7 +342,7 @@ export function demoDashboard() {
   const occupied = new Set(demoAssignments.map((row) => row.positionId));
   const vacantPositions = demoPositions.filter((position) => !occupied.has(position.id)).length;
   return {
-    organisationName: 'Opply',
+    organisationName: 'Omni',
     people: demoPeople.length,
     positions: demoPositions.length,
     vacantPositions,
@@ -556,7 +556,7 @@ export function applyDemoImport(
             id: demoUid(),
             name: values.department,
             code: values.department.slice(0, 8).toUpperCase(),
-            colour: '#22d3ee',
+            colour: '#4c8dff',
             parentDepartmentId: null,
           };
           demoDepartments.push(createdDept);

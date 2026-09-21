@@ -93,9 +93,9 @@ export default function AssistantPage() {
         </p>
       </div>
 
-      <Card className="border-[#e879f9]/35 bg-[#e879f9]/10">
+      <Card className="border-signal/35 bg-signal/10">
         <div className="flex items-start gap-3">
-          <Sparkles className="mt-0.5 h-4 w-4 text-[#f5d0fe]" />
+          <Sparkles className="mt-0.5 h-4 w-4 text-signal-soft" />
           <div>
             <p className="font-medium">
               {canAsk ? 'The AI agent can look up the org and apply edits you request' : 'Add an AI key to enable Ask'}

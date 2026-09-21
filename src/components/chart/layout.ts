@@ -45,8 +45,8 @@ function toFlowEdges(edgeModels: ChartEdgeModel[]): Edge[] {
     animated: edge.kind !== 'PRIMARY',
     style:
       edge.kind === 'PRIMARY'
-        ? { stroke: '#22d3ee', strokeWidth: 1.6 }
-        : { stroke: '#e879f9', strokeWidth: 1.4, strokeDasharray: '5 4' },
+        ? { stroke: 'var(--color-brand)', strokeWidth: 1.6 }
+        : { stroke: 'var(--color-signal)', strokeWidth: 1.4, strokeDasharray: '5 4' },
   }));
 }
 

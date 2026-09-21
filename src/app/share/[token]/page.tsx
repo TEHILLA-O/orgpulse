@@ -1,7 +1,7 @@
 import { PublicChart } from '@/components/chart/public-chart';
 
 export const metadata = {
-  title: 'Shared org chart · Opply org chart',
+  title: 'Shared org chart · Omni org chart',
   robots: { index: false, follow: false },
 };
 

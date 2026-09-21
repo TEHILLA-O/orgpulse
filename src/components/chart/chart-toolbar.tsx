@@ -108,7 +108,7 @@ export function ChartToolbar({
               className={cn(
                 'rounded-full px-3.5 py-1.5 text-xs font-semibold transition-[color,background-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)]',
                 surface === item.id
-                  ? 'bg-[var(--primary)] text-[var(--primary-foreground)] shadow-[0_6px_16px_rgba(34,211,238,0.28)]'
+                  ? 'bg-[var(--primary)] text-[var(--primary-foreground)] shadow-[0_6px_16px_rgba(76,141,255,0.28)]'
                   : 'text-[var(--muted-foreground)] hover:bg-white/8 hover:text-white',
               )}
               onClick={() => onSurface(item.id)}
@@ -134,7 +134,7 @@ export function ChartToolbar({
             }}
           />
           {surface === 'hierarchy' && data?.results?.length ? (
-            <ul className="motion-pop-in absolute z-20 mt-2 max-h-72 w-full overflow-auto rounded-2xl border border-white/15 bg-[#1c0840]/95 p-1 shadow-[0_16px_40px_rgba(6,0,22,0.4)] backdrop-blur-xl">
+            <ul className="motion-pop-in absolute z-20 mt-2 max-h-72 w-full overflow-auto rounded-2xl border border-white/15 bg-surface/95 p-1 shadow-[0_16px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl">
               {data.results.map((hit) => (
                 <li key={`${hit.kind}-${hit.id}`}>
                   <button

@@ -155,7 +155,7 @@ export default function DirectoryPage() {
               <tr key={person.id} className="border-t border-[var(--border)]">
                 <td className="px-4 py-2">
                   <div className="flex items-center gap-2">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#22d3ee] text-[10px] font-semibold text-[#071018]">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-[10px] font-semibold text-ink-invert">
                       {initials(person.displayName)}
                     </span>
                     <div>

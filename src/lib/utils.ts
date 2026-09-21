@@ -5,8 +5,11 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// Databases seeded before the rename still store the old brand names.
+const LEGACY_COMPANY_NAME = /northstar|opply|orgpulse/i;
+
 export function displayCompanyName(name?: string | null): string {
-  if (!name || /northstar/i.test(name)) return 'Opply';
+  if (!name || LEGACY_COMPANY_NAME.test(name)) return 'Omni';
   return name;
 }
 

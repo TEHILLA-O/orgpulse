@@ -6,7 +6,7 @@ describe('mapRipplingWorker', () => {
     const person = mapRipplingWorker({
       id: 'w-1',
       status: 'ACTIVE',
-      work_email: 'ada@opply.example',
+      work_email: 'ada@omni.example',
       title: 'Staff engineer',
       start_date: '2022-04-01',
       manager_id: 'w-ceo',
@@ -27,7 +27,7 @@ describe('mapRipplingWorker', () => {
       displayName: 'Ada Lovelace',
       firstName: 'Ada',
       lastName: 'Lovelace',
-      email: 'ada@opply.example',
+      email: 'ada@omni.example',
       jobTitle: 'Staff engineer',
       department: 'Engineering',
       officeLocation: 'London',
@@ -37,7 +37,7 @@ describe('mapRipplingWorker', () => {
   });
 
   it('skips terminated workers and records without ids', () => {
-    expect(mapRipplingWorker({ id: 'w-2', status: 'TERMINATED', work_email: 'gone@opply.example' })).toBeNull();
-    expect(mapRipplingWorker({ work_email: 'no-id@opply.example' })).toBeNull();
+    expect(mapRipplingWorker({ id: 'w-2', status: 'TERMINATED', work_email: 'gone@omni.example' })).toBeNull();
+    expect(mapRipplingWorker({ work_email: 'no-id@omni.example' })).toBeNull();
   });
 });

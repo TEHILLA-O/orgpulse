@@ -1,4 +1,4 @@
-# OrgPulse — Data Model
+# Omni — Data Model
 
 Authoritative description of the persistent domain model: entities, keys,
 relationships, invariants and indexing strategy. The Prisma schema in

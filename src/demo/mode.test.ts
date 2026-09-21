@@ -25,14 +25,14 @@ describe('isDemoMode', () => {
   it('uses the live database for a local Docker URL off Vercel', () => {
     delete process.env.ORG_DEMO;
     delete process.env.VERCEL;
-    process.env.DATABASE_URL = 'postgresql://orgpulse:orgpulse@127.0.0.1:55433/orgpulse';
+    process.env.DATABASE_URL = 'postgresql://omni:omni@127.0.0.1:55433/omni';
     expect(isDemoMode()).toBe(false);
   });
 
   it('uses the in-memory demo when Vercel is given a localhost DATABASE_URL', () => {
     delete process.env.ORG_DEMO;
     process.env.VERCEL = '1';
-    process.env.DATABASE_URL = 'postgresql://orgpulse:orgpulse@127.0.0.1:55433/orgpulse';
+    process.env.DATABASE_URL = 'postgresql://omni:omni@127.0.0.1:55433/omni';
     expect(isDemoMode()).toBe(true);
   });
 });

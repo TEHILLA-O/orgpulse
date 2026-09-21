@@ -33,7 +33,7 @@ export default async function AuthenticatedLayout({ children }: { children: Reac
     if (localUnreachable) {
       const guest = demoSession();
       return (
-        <AppShell userEmail={guest.email} role={guest.role} demo organisationName="Opply">
+        <AppShell userEmail={guest.email} role={guest.role} demo organisationName="Omni">
           {children}
         </AppShell>
       );

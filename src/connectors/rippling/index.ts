@@ -29,7 +29,7 @@ export function createRipplingConnector(credentials?: {
   const headers = {
     authorization: `Bearer ${token}`,
     accept: 'application/json',
-    'user-agent': 'Opply-ochart/1.0',
+    'user-agent': 'Omni-ochart/1.0',
   };
 
   function workersUrl() {

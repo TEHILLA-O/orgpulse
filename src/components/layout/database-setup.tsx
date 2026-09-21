@@ -1,8 +1,8 @@
 export function DatabaseSetup({ message }: { message?: string }) {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#120024] p-6">
-      <div className="max-w-lg rounded-3xl border border-white/15 bg-[rgba(28,8,62,0.72)] p-8 text-white shadow-[0_20px_50px_rgba(6,0,22,0.4)] backdrop-blur-xl">
-        <p className="text-[11px] font-semibold tracking-[0.28em] text-[#22d3ee] uppercase">Opply org chart</p>
+    <div className="flex min-h-screen items-center justify-center bg-canvas p-6">
+      <div className="max-w-lg rounded-3xl border border-white/15 bg-raised/70 p-8 text-white shadow-[0_20px_50px_rgba(0,0,0,0.4)] backdrop-blur-xl">
+        <p className="text-[11px] font-semibold tracking-[0.28em] text-brand uppercase">Omni org chart</p>
         <h1 className="mt-3 text-2xl font-semibold tracking-tight">Connect a Postgres database</h1>
         <p className="mt-3 text-sm leading-relaxed text-[var(--muted-foreground)]">
           The Vercel build succeeded. The app still needs <code>DATABASE_URL</code> at runtime — that is why the
@@ -21,7 +21,7 @@ export function DatabaseSetup({ message }: { message?: string }) {
             Point <code>DATABASE_URL</code> at a hosted Postgres. Apply migrations with{' '}
             <code>npx prisma migrate deploy</code>.
           </li>
-          <li>Seed Opply with <code>npx prisma db seed</code> if you want the demo organisation.</li>
+          <li>Seed Omni with <code>npx prisma db seed</code> if you want the demo organisation.</li>
         </ol>
       </div>
     </div>

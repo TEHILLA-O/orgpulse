@@ -128,7 +128,7 @@ export function DetailsDrawer({
                   className="h-20 w-20 rounded-full object-cover ring-4 ring-white/20"
                 />
               ) : (
-                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#22d3ee] text-lg font-semibold text-[#071018]">
+                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-brand text-lg font-semibold text-ink-invert">
                   {data.isVacant ? '+' : (occupant?.displayName ?? '?').slice(0, 1)}
                 </div>
               )}
@@ -142,7 +142,7 @@ export function DetailsDrawer({
                   {data.department ? (
                     <span
                       className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold text-white uppercase"
-                      style={{ background: data.department.colour ?? '#22d3ee' }}
+                      style={{ background: data.department.colour ?? 'var(--color-brand)' }}
                     >
                       {data.department.name}
                     </span>
@@ -159,7 +159,7 @@ export function DetailsDrawer({
 
             {data.profile?.bio ? <p className="mt-4 text-sm leading-relaxed">{data.profile.bio}</p> : null}
             {data.profile?.profileLinkUrl ? (
-              <a className="mt-2 inline-block text-sm font-medium text-[#22d3ee] underline" href={data.profile.profileLinkUrl} target="_blank" rel="noreferrer">
+              <a className="mt-2 inline-block text-sm font-medium text-brand underline" href={data.profile.profileLinkUrl} target="_blank" rel="noreferrer">
                 Linked profile
                 {data.profile.profileLinkUsername ? ` · ${data.profile.profileLinkUsername}` : ''}
               </a>
@@ -201,7 +201,7 @@ export function DetailsDrawer({
                       {allowance > 0 ? (
                         <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-[var(--border)]">
                           <div
-                            className="h-full rounded-full bg-[#22d3ee]"
+                            className="h-full rounded-full bg-brand"
                             style={{ width: `${leavePct}%` }}
                           />
                         </div>
@@ -437,7 +437,7 @@ function SeatEditor({
 
   return (
     <div className="mt-6 space-y-4 rounded-2xl border border-white/12 bg-white/5 p-4">
-      <p className="text-xs font-semibold tracking-wide text-[#67e8f9] uppercase">Edit this seat</p>
+      <p className="text-xs font-semibold tracking-wide text-brand-hi uppercase">Edit this seat</p>
       <div className="space-y-2">
         <Label htmlFor="seat-name">{vacant ? 'Person name (fills this open role)' : 'Name'}</Label>
         <Input id="seat-name" value={name} onChange={(event) => setName(event.target.value)} placeholder="Ada Lovelace" />

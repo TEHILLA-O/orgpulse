@@ -1,4 +1,4 @@
-# OrgPulse — Integrations
+# Omni — Integrations
 
 How external organisational data enters the system, and how the core stays
 ignorant of any particular vendor.
@@ -11,7 +11,7 @@ first *production* adapter; it is not special inside the domain.
 ## 1. Non-negotiable rule
 
 **No file outside `src/connectors/<adapter>/` may contain vendor-specific
-logic.** The rest of OrgPulse speaks only in normalised domain types and
+logic.** The rest of Omni speaks only in normalised domain types and
 `ExternalIdentity` rows.
 
 CSV, Microsoft 365, Entra ID, Google Workspace, BambooHR and a future HRIS
@@ -215,7 +215,7 @@ rest (`encryptedCredentials`, AES-256-GCM) and never logged.
 If credentials are absent, the real adapter is not instantiable. The mock
 remains available. This is documented, not hidden.
 
-**v1 is read-only.** OrgPulse will not patch Graph users.
+**v1 is read-only.** Omni will not patch Graph users.
 
 ---
 

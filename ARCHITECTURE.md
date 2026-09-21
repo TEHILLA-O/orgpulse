@@ -1,4 +1,4 @@
-# OrgPulse — Architecture
+# Omni — Architecture
 
 > Internal organisational intelligence and interactive org-chart platform.
 
@@ -18,13 +18,13 @@ Companion documents:
 
 ## 1. Product framing
 
-OrgPulse is **not** a diagram editor. A diagram editor stores shapes and lines.
-OrgPulse stores an organisational *graph* — positions and the reporting edges
+Omni is **not** a diagram editor. A diagram editor stores shapes and lines.
+Omni stores an organisational *graph* — positions and the reporting edges
 between them — and *derives* a diagram from it.
 
 That distinction drives nearly every architectural decision in this document:
 
-| Diagram tool                            | OrgPulse                                                |
+| Diagram tool                            | Omni                                                |
 | --------------------------------------- | ------------------------------------------------------- |
 | The picture is the source of truth       | The graph is the source of truth; the picture is derived |
 | A box is a person                        | A node is a **position**; a person is *assigned* to it   |
@@ -32,7 +32,7 @@ That distinction drives nearly every architectural decision in this document:
 | Layout is manual                         | Layout is computed (ELK) and reproducible                |
 | Import is a one-off paste                | Ingestion is a repeatable, idempotent sync pipeline      |
 
-OrgPulse is an original product. It deliberately shares no branding, visual
+Omni is an original product. It deliberately shares no branding, visual
 identity, asset, copy or implementation with any commercial org-chart vendor.
 
 ---

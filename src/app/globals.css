@@ -1,48 +1,91 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------------
+   Omni colour system — "Graphite & Azure"
+   ---------------------------------------------------------------------------
+   Dark-first, cool neutral graphite surfaces with one confident azure brand
+   accent. Violet is reserved for secondary/dotted-line reporting so the chart
+   reads unambiguously; green/amber/red are semantic only.
+
+   Two layers, deliberately:
+     @theme  -> generates Tailwind utilities (bg-brand, text-ink-soft, ...)
+     :root   -> shadcn-style semantic aliases consumed via var() in components
+
+   Components should use these tokens. Do not reintroduce raw hex values.
+--------------------------------------------------------------------------- */
+
 @theme {
   --font-sans: "Plus Jakarta Sans", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
-  --color-ink: #120024;
-  --color-ink-soft: #2a0860;
-  --color-paper: #120024;
-  --color-paper-deep: #1a0538;
-  --color-gold: #e879f9;
-  --color-sea: #22d3ee;
-  --color-sea-bright: #67e8f9;
-  --color-clay: #f472b6;
+
+  /* Surfaces — cool graphite, no purple cast */
+  --color-sunken: #06080c;
+  --color-canvas: #0a0d13;
+  --color-surface: #11151d;
+  --color-raised: #171c26;
+  --color-elevated: #212836;
+
+  /* Text */
+  --color-ink: #e7ebf3;
+  --color-ink-soft: #a2adc1;
+  --color-ink-faint: #6b7789;
+  --color-ink-invert: #050b16;
+
+  /* Brand — primary reporting lines, filled seats, primary actions */
+  --color-brand: #4c8dff;
+  --color-brand-hi: #7aabff;
+  --color-brand-soft: #b6d0ff;
+
+  /* Signal — secondary / dotted-line relationships, secondary roles */
+  --color-signal: #a78bfa;
+  --color-signal-hi: #c1abff;
+  --color-signal-soft: #dccfff;
+
+  /* Semantic */
+  --color-positive: #3dd68c;
+  --color-positive-soft: #a3ecc8;
+  --color-caution: #f2b33d;
+  --color-caution-soft: #f8dca4;
+  --color-critical: #ff6b72;
+  --color-critical-soft: #ffb9bd;
+
   --radius-sm: 0.5rem;
   --radius-md: 0.85rem;
   --radius-lg: 1.15rem;
 }
 
 :root {
-  --background: #120024;
-  --foreground: #f8f5ff;
-  --card: rgba(28, 8, 62, 0.62);
-  --card-foreground: #f8f5ff;
-  --muted: rgba(255, 255, 255, 0.08);
-  --muted-foreground: #cbb6ef;
-  --border: rgba(255, 255, 255, 0.14);
-  --primary: #22d3ee;
-  --primary-foreground: #071018;
-  --accent: #e879f9;
-  --accent-foreground: #2a0538;
-  --destructive: #fb7185;
-  --ring: #22d3ee;
-  --sidebar: rgba(10, 0, 28, 0.72);
-  --sidebar-foreground: #f8f5ff;
-  --sidebar-muted: #b9a3e6;
-  --shadow-soft: 0 18px 50px rgba(6, 0, 22, 0.38);
+  --background: #0a0d13;
+  --foreground: #e7ebf3;
+  --card: rgba(23, 28, 38, 0.72);
+  --card-foreground: #e7ebf3;
+  --muted: rgba(255, 255, 255, 0.055);
+  --muted-foreground: #a2adc1;
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --primary: #4c8dff;
+  --primary-foreground: #050b16;
+  --accent: #a78bfa;
+  --accent-foreground: #050b16;
+  --destructive: #ff6b72;
+  --ring: #4c8dff;
+  --sidebar: rgba(8, 11, 17, 0.86);
+  --sidebar-foreground: #e7ebf3;
+  --sidebar-muted: #6b7789;
+  --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.42);
   --motion-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --motion-fast: 160ms;
   --motion-med: 280ms;
   --motion-slow: 420ms;
 }
 
-* {
-  border-color: var(--border);
-  scrollbar-width: thin;
-  scrollbar-color: #7c3aed #1a0538;
+/* Must live in @layer base: unlayered rules outrank @layer utilities, so an
+   unlayered `*` default here would defeat every border-<colour> utility. */
+@layer base {
+  * {
+    border-color: var(--border);
+    scrollbar-width: thin;
+    scrollbar-color: #2c3547 transparent;
+  }
 }
 
 *::-webkit-scrollbar {
@@ -51,17 +94,17 @@
 }
 
 *::-webkit-scrollbar-track {
-  background: rgba(18, 0, 36, 0.72);
+  background: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #7c3aed, #22d3ee);
+  background: #2c3547;
   border-radius: 999px;
-  border: 2px solid rgba(18, 0, 36, 0.85);
+  border: 2px solid var(--background);
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #8b5cf6, #67e8f9);
+  background: #3c4759;
 }
 
 html,
@@ -74,52 +117,18 @@ body {
 body {
   font-family: var(--font-sans);
   isolation: isolate;
-  background-color: #120024;
-  background-image:
-    radial-gradient(1100px 640px at 8% -8%, rgba(124, 58, 237, 0.62), transparent 58%),
-    radial-gradient(820px 520px at 92% 6%, rgba(34, 211, 238, 0.22), transparent 52%),
-    radial-gradient(900px 560px at 78% 108%, rgba(217, 70, 239, 0.22), transparent 55%),
-    linear-gradient(180deg, #4c1d95 0%, #2a0860 34%, #120024 100%);
+  background-color: #0a0d13;
+  /* A single soft top-light for depth. Flat surfaces, no neon wash. */
+  background-image: radial-gradient(1200px 520px at 50% -18%, rgba(76, 141, 255, 0.07), transparent 62%);
   background-attachment: fixed;
 }
 
-body::before,
-body::after {
-  content: "";
-  pointer-events: none;
-  position: fixed;
-  z-index: -1;
-  border-radius: 50%;
-  filter: blur(8px);
-}
-
-body::before {
-  top: -12%;
-  left: -6%;
-  width: 46vw;
-  height: 46vw;
-  max-width: 640px;
-  max-height: 640px;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.28), transparent 68%);
-  animation: orb-drift 22s var(--motion-ease) infinite;
-}
-
-body::after {
-  right: -4%;
-  bottom: -10%;
-  width: 38vw;
-  height: 38vw;
-  max-width: 520px;
-  max-height: 520px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.16), transparent 70%);
-  animation: orb-drift 28s var(--motion-ease) infinite reverse;
-}
-
+/* Chart canvas: a real dot grid reads as a working surface and gives the eye
+   a sense of scale while panning. */
 .canvas-grid {
-  background:
-    radial-gradient(900px 480px at 12% -20%, rgba(34, 211, 238, 0.16), transparent 55%),
-    radial-gradient(800px 420px at 100% 0%, rgba(232, 121, 249, 0.12), transparent 50%),
-    transparent;
+  background-color: #080b11;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.055) 1px, transparent 0);
+  background-size: 22px 22px;
 }
 
 .react-flow__controls {
@@ -127,20 +136,20 @@ body::after {
   border: 1px solid var(--border);
   border-radius: 14px;
   box-shadow: var(--shadow-soft);
-  background: rgba(20, 4, 48, 0.86) !important;
+  background: rgba(23, 28, 38, 0.92) !important;
 }
 
 .react-flow__controls-button {
   border-bottom-color: var(--border) !important;
   background: transparent !important;
-  fill: #f8f5ff !important;
+  fill: #e7ebf3 !important;
   transition:
     background 180ms ease,
     transform 180ms var(--motion-ease) !important;
 }
 
 .react-flow__controls-button:hover {
-  background: rgba(255, 255, 255, 0.08) !important;
+  background: rgba(255, 255, 255, 0.07) !important;
   transform: scale(1.06);
 }
 
@@ -152,12 +161,11 @@ body::after {
 .react-flow__edge .react-flow__edge-path {
   transition:
     stroke-width 180ms ease,
-    filter 180ms ease;
+    stroke 180ms ease;
 }
 
 .react-flow__edge:hover .react-flow__edge-path {
   stroke-width: 2.5 !important;
-  filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.55));
 }
 
 .react-flow__minimap {
@@ -165,7 +173,7 @@ body::after {
   border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow: var(--shadow-soft);
-  background: rgba(20, 4, 48, 0.86) !important;
+  background: rgba(23, 28, 38, 0.92) !important;
 }
 
 .react-flow__attribution {
@@ -176,15 +184,15 @@ select,
 select option,
 select optgroup {
   color-scheme: dark;
-  background-color: #1c0840;
-  color: #f8f5ff;
+  background-color: #171c26;
+  color: #e7ebf3;
 }
 
 select.soft-select {
   height: 2.25rem;
   border-radius: 999px;
   border: 1px solid var(--border);
-  background: rgba(28, 8, 62, 0.78);
+  background: rgba(23, 28, 38, 0.82);
   color: var(--foreground);
   padding: 0 0.9rem;
   font-size: 0.8125rem;
@@ -192,23 +200,13 @@ select.soft-select {
 
 select.soft-select:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.35);
+  box-shadow: 0 0 0 2px rgba(76, 141, 255, 0.4);
 }
 
 select option:checked,
 select option:hover {
-  background-color: #22d3ee;
-  color: #071018;
-}
-
-@keyframes orb-drift {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(4%, 6%) scale(1.08);
-  }
+  background-color: #4c8dff;
+  color: #050b16;
 }
 
 @keyframes rise {
@@ -335,13 +333,14 @@ select option:hover {
   }
 }
 
+/* Restrained brand pulse — a ring, not a neon glow. */
 @keyframes logo-glow {
   0%,
   100% {
-    box-shadow: 0 0 18px rgba(34, 211, 238, 0.38);
+    box-shadow: 0 0 0 0 rgba(76, 141, 255, 0.34);
   }
   50% {
-    box-shadow: 0 0 28px rgba(232, 121, 249, 0.45);
+    box-shadow: 0 0 0 4px rgba(76, 141, 255, 0);
   }
 }
 
@@ -469,7 +468,7 @@ select option:hover {
   html,
   body {
     background: #fff;
-    color: #120024;
+    color: #0a0d13;
     height: auto;
   }
 
@@ -479,10 +478,6 @@ select option:hover {
     height: auto !important;
     overflow: visible !important;
     background: #fff !important;
-  }
-
-  body::before,
-  body::after {
-    display: none !important;
+    background-image: none !important;
   }
 }

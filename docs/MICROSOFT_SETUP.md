@@ -1,15 +1,15 @@
-# Microsoft Entra ID setup for OrgPulse
+# Microsoft Entra ID setup for Omni
 
-This guide is for an organisation administrator who will connect OrgPulse
+This guide is for an organisation administrator who will connect Omni
 to Microsoft Entra ID / Microsoft Graph. It is **not** required for local
 development — the mock connector is the default.
 
-OrgPulse's Microsoft integration is **read-only** in this version. The
+Omni's Microsoft integration is **read-only** in this version. The
 application will not create, update or delete users in Entra ID.
 
 ---
 
-## 1. What OrgPulse will read
+## 1. What Omni will read
 
 | Graph resource | Permission | Why |
 | -------------- | ---------- | --- |
@@ -19,7 +19,7 @@ application will not create, update or delete users in Entra ID.
 | Organisation directory (optional) | `Organization.Read.All` | Tenant display name |
 
 Do **not** grant `User.ReadWrite.All`, `Directory.ReadWrite.All`, or any
-mail/files/calendar scope. OrgPulse will not use them.
+mail/files/calendar scope. Omni will not use them.
 
 ---
 
@@ -28,11 +28,11 @@ mail/files/calendar scope. OrgPulse will not use them.
 1. Open [Microsoft Entra admin centre](https://entra.microsoft.com) →
    **Identity** → **Applications** → **App registrations** → **New
    registration**.
-2. Name: `OrgPulse` (or your chosen internal name).
+2. Name: `Omni` (or your chosen internal name).
 3. Supported account types: **Accounts in this organisational directory
    only** (single tenant).
 4. Redirect URI (Web):
-   - Production: `https://<your-orgpulse-host>/api/auth/callback/microsoft-entra-id`
+   - Production: `https://<your-omni-host>/api/auth/callback/microsoft-entra-id`
    - Preview: the equivalent preview URL
 5. Register.
 
@@ -46,8 +46,8 @@ Record:
 ## 3. Create a client secret
 
 1. **Certificates & secrets** → **New client secret**.
-2. Description: `orgpulse-graph-sync`.
-3. Expiry: 12 months (set a calendar reminder; OrgPulse will surface an
+2. Description: `omni-graph-sync`.
+3. Expiry: 12 months (set a calendar reminder; Omni will surface an
    integration-health warning 14 days before known expiry once stored).
 4. Copy the **Value** immediately. It is not shown again.
 
@@ -74,13 +74,13 @@ For interactive sign-in (SSO, Phase 4) also add **Delegated**:
 - `User.Read` (the signed-in admin, not the directory)
 
 SSO and directory sync are separate concerns: a user can sign in with Entra
-without OrgPulse being allowed to read the whole directory, and vice versa.
+without Omni being allowed to read the whole directory, and vice versa.
 
 ---
 
-## 5. Configure OrgPulse
+## 5. Configure Omni
 
-Set these environment variables on the OrgPulse host. **Never put them in
+Set these environment variables on the Omni host. **Never put them in
 git.**
 
 ```
@@ -97,7 +97,7 @@ MICROSOFT_GRAPH_BASE_URL=https://graph.microsoft.com/v1.0
 MICROSOFT_PHOTO_SYNC=true
 ```
 
-Then in OrgPulse: **Integrations** → **Add connector** → **Microsoft 365**
+Then in Omni: **Integrations** → **Add connector** → **Microsoft 365**
 → **Test connection** → **Preview sync** → **Apply**.
 
 The first apply takes a `PRE_SYNC` snapshot. Review deactivations in the
@@ -114,8 +114,8 @@ preview; they are not applied until you confirm.
       Administrator
 - [ ] Client secret stored in a secret manager, not in a ticket or chat
 - [ ] No mail, files, Teams or Sites permissions
-- [ ] OrgPulse `Connector.isReadOnly = true`
-- [ ] Conditional Access: restrict the app to the OrgPulse hosting identity
+- [ ] Omni `Connector.isReadOnly = true`
+- [ ] Conditional Access: restrict the app to the Omni hosting identity
       if your tenant uses workload identity CA
 
 ---
@@ -145,11 +145,11 @@ values. Never use production-tenant credentials on a laptop.
 
 To disconnect:
 
-1. In OrgPulse, disable or delete the connector (credentials are wiped).
+1. In Omni, disable or delete the connector (credentials are wiped).
 2. In Entra, **App registrations** → the app → **Delete**, or remove admin
    consent.
 3. Rotate the client secret even if the app is kept.
 
-Existing OrgPulse people/positions remain; only the live link is cut.
+Existing Omni people/positions remain; only the live link is cut.
 `ExternalIdentity` rows are retained for audit unless an OWNER explicitly
 purges them.

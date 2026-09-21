@@ -109,7 +109,7 @@ export async function askOrganisation(organisationId: string, question: string, 
     {
       role: 'system',
       content: [
-        'You are Opply org chart, an operator for this organisation chart.',
+        'You are Omni org chart, an operator for this organisation chart.',
         'Use tools to look up live data and to apply edits. Do not invent people, salaries, or unstated reporting lines.',
         'Never mention emails, phone numbers, or compensation.',
         canEdit

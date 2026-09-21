@@ -58,7 +58,7 @@ function supabaseHeaders(key: string): Record<string, string> {
     apikey: key,
     authorization: `Bearer ${key}`,
     Accept: 'application/json',
-    'User-Agent': 'Opply-ochart/1.0',
+    'User-Agent': 'Omni-ochart/1.0',
   };
 }
 

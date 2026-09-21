@@ -68,7 +68,7 @@ export function DashboardView() {
   return (
     <div className="space-y-6">
       <div>
-        <p className="text-sm text-[var(--muted-foreground)]">{data?.organisationName ?? 'Opply'}</p>
+        <p className="text-sm text-[var(--muted-foreground)]">{data?.organisationName ?? 'Omni'}</p>
         <h1 className="text-3xl font-semibold tracking-tight">Organisation pulse</h1>
       </div>
       <div className="stagger-in grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -92,7 +92,7 @@ export function DashboardView() {
               ? new Date(data.lastSuccessfulSync.finishedAt).toLocaleString()
               : 'Never'}
           </p>
-          <Link className="mt-3 inline-block text-sm underline decoration-transparent underline-offset-4 transition-[color,text-decoration-color] duration-200 hover:text-[#67e8f9] hover:decoration-[#67e8f9]" href="/integrations">
+          <Link className="mt-3 inline-block text-sm underline decoration-transparent underline-offset-4 transition-[color,text-decoration-color] duration-200 hover:text-brand-hi hover:decoration-brand-hi" href="/integrations">
             Open integrations
           </Link>
         </Card>

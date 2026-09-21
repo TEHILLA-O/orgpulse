@@ -1,4 +1,4 @@
-# OrgPulse — Implementation Plan
+# Omni — Implementation Plan
 
 Living checklist. Deferred work is recorded with **reason**, **dependency** and
 **recommended implementation** so nothing is silently dropped.
@@ -184,7 +184,7 @@ shipping it earlier would couple the core to infrastructure we do not need.
 ### D2. Outbound write-back to Microsoft / any HRIS
 
 - **Reason:** v1 connectors are read-only by product decision. Pushing
-  drag/drop back into Entra ID would make OrgPulse a system of record for
+  drag/drop back into Entra ID would make Omni a system of record for
   identity, which it is not.
 - **Dependency:** explicit product decision, Graph `User.ReadWrite.All` (or
   narrower), conflict UX, and a legal/HR review.

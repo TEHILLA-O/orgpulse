@@ -1,8 +1,8 @@
-# OrgPulse
+# Omni
 
 Internal organisational intelligence and interactive org-chart platform.
 
-OrgPulse models **people** and **positions** as separate entities, builds
+Omni models **people** and **positions** as separate entities, builds
 the reporting graph between positions, and derives an interactive chart
 from that graph. It is an original product — not a clone of any commercial
 org-chart vendor.
@@ -34,7 +34,7 @@ Open http://localhost:3000 and sign in:
 | Editor | `editor@northstar.example`    | `OrgPulse!dev` |
 | Viewer | `viewer@northstar.example`    | `OrgPulse!dev` |
 
-Seed data is a fictional company, **Opply**: ~150 people,
+Seed data is a fictional company, **Omni**: ~150 people,
 8 departments, 5 locations, vacancies, dotted-line reports and provenance
 from the mock Microsoft connector.
 

@@ -1,6 +1,6 @@
-# OrgPulse — Security
+# Omni — Security
 
-OrgPulse stores employee names, contact details, reporting lines and
+Omni stores employee names, contact details, reporting lines and
 (eventually) custom HR fields. Treat it as a **business-sensitive internal
 system**, not as a public website with a login page.
 
@@ -235,8 +235,8 @@ info-level logs. Debug logging of full entities is disabled in production.
 5. Single app replica may run the in-process scheduler. Multiple replicas
    must disable it on all but one, or move to BullMQ (TODO D1).
 6. Network-restrict the Graph tenant (conditional access) independently of
-   OrgPulse.
-7. Do not put OrgPulse on the public internet without SSO, rate limiting
+   Omni.
+7. Do not put Omni on the public internet without SSO, rate limiting
    at the edge, and an IP allow-list or ZTNA in front.
 8. Container image runs as a non-root user; read-only root filesystem
    except for `/tmp` and the Next.js cache.

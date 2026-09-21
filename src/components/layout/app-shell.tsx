@@ -10,7 +10,7 @@ export function AppShell({
   userEmail,
   role,
   demo,
-  organisationName = 'Opply',
+  organisationName = 'Omni',
 }: {
   children: React.ReactNode;
   userEmail: string;

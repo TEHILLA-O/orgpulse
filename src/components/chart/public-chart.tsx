@@ -75,9 +75,9 @@ function PublicChartInner({ token, embed }: { token: string; embed?: boolean }) 
   return (
     <div className="flex h-full flex-col bg-transparent">
       {embed ? null : (
-        <header className="flex items-center justify-between border-b border-white/10 bg-[rgba(18,0,36,0.55)] px-5 py-3 backdrop-blur-xl">
+        <header className="flex items-center justify-between border-b border-white/10 bg-canvas/55 px-5 py-3 backdrop-blur-xl">
           <div>
-            <p className="text-[11px] font-semibold tracking-[0.22em] text-[#22d3ee] uppercase">Opply org chart</p>
+            <p className="text-[11px] font-semibold tracking-[0.22em] text-brand uppercase">Omni org chart</p>
             <p className="text-sm font-semibold">{data?.chart?.name ?? 'Shared chart'}</p>
           </div>
           <p className="text-xs text-[var(--muted-foreground)]">
@@ -107,11 +107,11 @@ function PublicChartInner({ token, embed }: { token: string; embed?: boolean }) 
           fitView
         >
           <Background variant={BackgroundVariant.Dots} gap={22} size={1.15} color="rgba(255, 255, 255, 0.14)" />
-          <MiniMap pannable zoomable maskColor="rgba(18, 0, 36, 0.72)" />
+          <MiniMap pannable zoomable maskColor="rgba(10, 13, 19, 0.72)" />
           <Controls showInteractive={false} />
         </ReactFlow>
         {selected ? (
-          <aside className="absolute top-4 right-4 w-64 rounded-2xl border border-white/15 bg-[rgba(28,8,62,0.86)] p-4 text-white shadow-[0_16px_40px_rgba(6,0,22,0.4)] backdrop-blur-xl">
+          <aside className="absolute top-4 right-4 w-64 rounded-2xl border border-white/15 bg-raised/85 p-4 text-white shadow-[0_16px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl">
             <p className="text-sm font-semibold">{selected.occupants[0]?.displayName ?? 'Open role'}</p>
             <p className="text-xs text-[var(--muted-foreground)]">{selected.title}</p>
             <p className="mt-2 text-xs">{selected.departmentName ?? 'Unassigned'}</p>

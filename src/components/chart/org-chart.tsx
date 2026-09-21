@@ -39,7 +39,7 @@ import { reportingLineageIds } from '@/domain/chart/spotlight';
 const nodeTypes = { position: PositionNode };
 
 function positionsStorageKey(chartId: string) {
-  return `opply:chart-positions:${chartId}`;
+  return `omni:chart-positions:${chartId}`;
 }
 
 function readPinnedPositions(chartId: string): Record<string, ChartPoint> {
@@ -514,12 +514,12 @@ function ChartInner({ role }: { role: string }) {
               proOptions={{ hideAttribution: true }}
             >
               <Background variant={BackgroundVariant.Dots} gap={22} size={1.15} color="rgba(255, 255, 255, 0.14)" />
-              <MiniMap pannable zoomable maskColor="rgba(18, 0, 36, 0.72)" />
+              <MiniMap pannable zoomable maskColor="rgba(10, 13, 19, 0.72)" />
               <Controls showInteractive={false} />
             </ReactFlow>
             {data && data.totals.positions === 0 && canEdit && mode === 'LIVE' ? (
               <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
-                <div className="pointer-events-auto rounded-3xl border border-white/15 bg-[#1c0840]/90 p-6 text-center shadow-[0_18px_50px_rgba(6,0,22,0.45)] backdrop-blur-xl">
+                <div className="pointer-events-auto rounded-3xl border border-white/15 bg-surface/90 p-6 text-center shadow-[0_18px_50px_rgba(0,0,0,0.45)] backdrop-blur-xl">
                   <p className="text-lg font-semibold">Start this organisation chart</p>
                   <p className="mt-1 max-w-sm text-sm text-[var(--muted-foreground)]">
                     Add a first person at the top of the tree. You can drag cards onto managers afterwards — each change writes to Postgres.

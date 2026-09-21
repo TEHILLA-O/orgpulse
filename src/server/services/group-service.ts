@@ -58,7 +58,7 @@ export async function createGroup(input: {
       name: input.body.name.trim(),
       slug,
       kind: input.body.kind,
-      colour: input.body.colour ?? '#22d3ee',
+      colour: input.body.colour ?? '#4c8dff',
       description: input.body.description ?? null,
       isSystem: false,
     },

@@ -218,7 +218,7 @@ export async function reviewImportWithAgent(
   try {
     const result = await completeChat({
       system:
-        'You are Opply org chart import agent. Review a CSV-derived org chart. Never invent people. Never mention emails, salaries, or HR fields. Reply with JSON only: {"summary": string, "findings": [{"severity":"error"|"warning"|"info","kind":"duplicate"|"error"|"manager"|"structure"|"data","rowNumber": number|null,"message": string}], "tree": [{"name": string, "title": string, "reportsTo": string|null, "department": string, "note": string}]}. Flag duplicate names, missing managers, broken trees, and likely matches to existing staff. Keep findings under 20 and tree under 25.',
+        'You are Omni org chart import agent. Review a CSV-derived org chart. Never invent people. Never mention emails, salaries, or HR fields. Reply with JSON only: {"summary": string, "findings": [{"severity":"error"|"warning"|"info","kind":"duplicate"|"error"|"manager"|"structure"|"data","rowNumber": number|null,"message": string}], "tree": [{"name": string, "title": string, "reportsTo": string|null, "department": string, "note": string}]}. Flag duplicate names, missing managers, broken trees, and likely matches to existing staff. Keep findings under 20 and tree under 25.',
       user: `Existing organisation people:\n${existingLines.join('\n') || '(empty organisation)'}\n\nImported rows:\n${importLines.join('\n')}\n\nDeterministic findings already raised:\n${local.findings.map((finding) => finding.message).join('\n') || 'none'}`,
       temperature: 0.1,
       json: true,
