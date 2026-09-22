@@ -2,6 +2,8 @@
 
 Internal organisational intelligence and interactive org-chart platform.
 
+See [FAILURES.md](./FAILURES.md) for what can go wrong, what broke, how it was fixed, and results.
+
 Omni models **people** and **positions** as separate entities, builds
 the reporting graph between positions, and derives an interactive chart
 from that graph. It is an original product — not a clone of any commercial
