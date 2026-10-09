@@ -1,4 +1,4 @@
-# Omni — Integrations
+# Omni: Integrations
 
 How external organisational data enters the system, and how the core stays
 ignorant of any particular vendor.

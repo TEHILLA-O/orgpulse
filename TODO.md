@@ -1,4 +1,4 @@
-# Omni — Implementation Plan
+# Omni: Implementation Plan
 
 Living checklist. Deferred work is recorded with **reason**, **dependency** and
 **recommended implementation** so nothing is silently dropped.
@@ -24,7 +24,7 @@ Phase 0 therefore starts from documentation + empty application skeleton.
 
 ---
 
-## Phase 0 — Foundation
+## Phase 0: Foundation
 
 Goal: a developer can `docker compose up`, migrate, seed, and sign in against
 a real organisation database. No chart canvas yet.
@@ -86,7 +86,7 @@ and hit an authenticated API that returns the organisation.
 
 ---
 
-## Phase 1 — Core org chart (first usable demo)
+## Phase 1: Core org chart (first usable demo)
 
 Goal: the Definition of Done for the first demo, minus CSV import and
 Microsoft Graph (those are Phase 2; the mock connector satisfies “load sample
@@ -114,7 +114,7 @@ is satisfied, with sample external data coming from `MICROSOFT_MOCK`.
 
 ---
 
-## Phase 2 — Data connection
+## Phase 2: Data connection
 
 - [x] CSV import wizard (upload → map → validate → preview → apply; XLSX via save-as-CSV)
 - [x] Staged import tables; apply with cycle detection
@@ -132,7 +132,7 @@ is satisfied, with sample external data coming from `MICROSOFT_MOCK`.
 
 ---
 
-## Phase 3 — Organisational intelligence
+## Phase 3: Organisational intelligence
 
 - [ ] People directory (search, filter, sort, pagination)
 - [ ] Secondary / dotted-line managers as first-class chart edges
@@ -145,7 +145,7 @@ is satisfied, with sample external data coming from `MICROSOFT_MOCK`.
 
 ---
 
-## Phase 4 — Collaboration
+## Phase 4: Collaboration
 
 - [ ] Export CSV / XLSX / PNG / PDF (PPTX architecture only)
 - [ ] Authenticated internal sharing
@@ -156,7 +156,7 @@ is satisfied, with sample external data coming from `MICROSOFT_MOCK`.
 
 ---
 
-## Phase 5 — Additional integrations
+## Phase 5: Additional integrations
 
 - [ ] Google Workspace adapter
 - [ ] Generic REST adapter framework

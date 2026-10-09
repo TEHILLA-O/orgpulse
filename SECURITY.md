@@ -1,4 +1,4 @@
-# Omni — Security
+# Omni: Security
 
 Omni stores employee names, contact details, reporting lines and
 (eventually) custom HR fields. Treat it as a **business-sensitive internal

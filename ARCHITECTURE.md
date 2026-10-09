@@ -1,4 +1,4 @@
-# Omni — Architecture
+# Omni: Architecture
 
 > Internal organisational intelligence and interactive org-chart platform.
 
