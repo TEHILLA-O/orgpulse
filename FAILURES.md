@@ -17,6 +17,7 @@ Honest engineering notes for this project. Nothing here is invented for polish.
 2. Vercel production builds failed on TypeScript errors and a duplicate organisation GET route.
 3. Missing auth secret and Docker-local `DATABASE_URL` on Vercel caused crashes or wrong data paths; Prisma on the Edge proxy blocked dashboard render.
 4. Early workspace was docs-only (no Prisma/Next/`src`), so Phase 0 had to bootstrap the app from an empty skeleton (`TODO.md`).
+5. Found in a fresh clone check on 1 November 2026, **not fixed yet**: with a real database and no session, `requireOrgContext` falls back to `guestContext()`, which acts as the first OWNER. Unauthenticated `GET /api/v1/people` and `GET /api/v1/audit-events` returned 200 with full records. `npm run lint` also fails with 10 errors.
 
 ## How it was resolved
 
@@ -29,4 +30,5 @@ Honest engineering notes for this project. Nothing here is invented for polish.
 
 - Local demo: `docker compose up`, migrate, seed, sign in as owner/admin/editor/viewer against fictional Omni (~150 people, 8 departments, 5 locations).
 - Scripts: `npm run verify` runs typecheck + lint + unit tests; Playwright e2e is configured.
+- Fresh clone check (1 November 2026): typecheck passes, 63 Vitest tests pass, build passes, lint fails (10 errors). Seed creates 150 people, 160 positions, 10 vacancies.
 - Live site referenced in repo metadata: org-chart Vercel app. No production outage metrics are claimed here.
